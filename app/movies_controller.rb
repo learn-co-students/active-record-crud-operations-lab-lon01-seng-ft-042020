@@ -6,9 +6,10 @@
 # end                              # end
 
 def can_be_instantiated_and_then_saved
-  movie = Movie.new
-  movie.title = "This is a title."
-  movie.save
+  # movie = Movie.new
+  # movie.title = "This is a title."
+  # movie.save
+  movie = Movie.create(title: "This is a title.")
 end
 
 def can_be_created_with_a_hash_of_attributes
@@ -75,7 +76,7 @@ end
 def can_update_using_update_method
   # Update movie title to "Wat, huh?"
   Movie.create(title: "Wat?")
-  movie = Movie.find_by(title: "Wat?")
+  movie = Movie.find_by(title: "Wat?") #Movie.all.find_by(title: "Wat?")
   movie.update(title: "Wat, huh?")
 end
 
@@ -84,7 +85,7 @@ def can_update_multiple_items_at_once
   5.times do |i|
     Movie.create(title: "Movie_#{i}", release_date: 2000+i)
   end
-  Movie.update_all(title: "A Movie")
+  Movie.update_all(title: "A Movie") #Movie.all.update_all(title: "A Movie")
 end
 
 def can_destroy_a_single_item
@@ -97,5 +98,9 @@ def can_destroy_all_items_at_once
   10.times do |i|
     Movie.create(title: "Movie_#{i}")
   end
-  Movie.destroy_all
+  Movie.destroy_all # Movie.all.destroy_all - NOT too much code, it is better without all
 end
+
+#Movie.all.first , .last, .second 
+# create - create new and save it 
+# new - create new instance but not save it 
